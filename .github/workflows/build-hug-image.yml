@@ -1,15 +1,15 @@
 name: Build huggingface Image
 
-于:
+on:
   push:
-    分支: [ hug ]
+    branches: [ hug ]
     paths:
       - 'Dockerfile'
       - 'index.js'
       - 'package.json'
       - 'index.html'
   pull_request:
-    分支: [ hug ]
+    branches: [ hug ]
   workflow_dispatch:
 
 jobs:
@@ -46,8 +46,8 @@ jobs:
         with:
           context: .
           push: true
-          标签: |
-            ghcr.io/${{ steps.vars.outputs.owner_lower }}/index_ws:latest
+          tags: |
+            ghcr.io/${{ steps.vars.outputs.owner_lower }}/index:latest
           labels: |
             org.opencontainers.image.source=https://github.com/${{ steps.vars.outputs.repo_lower }}
             org.opencontainers.image.description=http server
